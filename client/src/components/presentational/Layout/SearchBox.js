@@ -2,43 +2,89 @@ import React from 'react';
 import {BoxTitle} from './BoxTitle'
 import {Input} from './Input'
 import {SubmitButton} from './SubmitButton'
+import API from "../../../utils/API";
 
 class SearchBox extends React.Component {
     constructor(props) {
         super(props)
     }
 
+    state = {
+        query: '',
+        startYear: '',
+        endYear: '',
+        articles: []
+    }
+
+    handleInputChange = (event) => {
+        const { name, value } = event.target;
+
+        console.log('input changing')
+
+        this.setState({
+            [name]: value
+        });
+    }
+
+    handleFormSubmit = (event) => {
+        event.preventDefault();
+
+        console.log('submitted', this.state.query)
+
+        if (this.state.query) {
+            API.getArticleByQuery({
+                query: this.state.query
+            })
+                .then(res => this.parseArticleData(res))
+                .catch(err => console.log(err));
+        }
+    }
+
+    parseArticleData = (res) => {
+        console.log(['res', res])
+    }
+
     render() {
         return (
             <div style={Style.container}>
                 <BoxTitle title='Search' />
-                <Input
-                    type='text'
-                    placeholder='Search for your query here...'
-                    label='Query'
-                    title='Query'
-                    inputName='query-string'
-                    className='input-field'
-                />
-                <Input
-                    type='number'
-                    placeholder='start year'
-                    label='Start Year'
-                    title='Start Year'
-                    inputName='start-year'
-                    className='input-field'
-                />
-                <Input
-                    type='number'
-                    placeholder='end year'
-                    label='End Year'
-                    title='End Year'
-                    inputName='end-year'
-                    className='input-field'
-                />
-                <SubmitButton
-                    title='Submit'
-                />
+                <form>
+                    <Input
+                        type='text'
+                        placeholder='Search for your query here...'
+                        label='Query'
+                        title='Query'
+                        className='input-field'
+                        name='query'
+                        value={this.state.query}
+                        handleInputChange={this.handleInputChange}
+                    />
+                    <Input
+                        type='number'
+                        placeholder='start year'
+                        label='Start Year'
+                        title='Start Year'
+                        className='input-field'
+                        name='startYear'
+                        value={this.state.startYear}
+                        handleInputChange={this.handleInputChange}
+                    />
+                    <Input
+                        type='number'
+                        placeholder='end year'
+                        label='End Year'
+                        title='End Year'
+                        className='input-field'
+                        name='endYear'
+                        value={this.state.endYear}
+                        handleInputChange={this.handleInputChange}
+                    />
+                    <SubmitButton
+                        title='Submit'
+                        disabled={!this.state.query}
+                        handleFormSubmit={this.handleFormSubmit}
+                    />
+                </form>
             </div>
         )
     }

@@ -1,7 +1,13 @@
 import React from 'react';
 
 export const SubmitButton = (props) => (
-    <button style={Style.container} className="btn waves-effect waves-light" type="submit" name="action">{props.title}</button>
+    <a
+        style={Style.container}
+        className="btn waves-effect waves-light"
+        onClick={(e) => props.handleFormSubmit(e)}
+    >
+        {props.title}
+    </a>
 )
 
 const Style = {

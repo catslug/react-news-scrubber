@@ -3,7 +3,7 @@ import React from 'react'
 export const NoMatchBox = () => (
     <div style={Style.container}>
         <h3 style={Style.text}>Sorry, this page does not exist</h3>
-        <img style={Style.img}src="https://thumbs.gfycat.com/OptimalYellowCarp-size_restricted.gif" />
+        <img alt='donut gif' style={Style.img}src="https://thumbs.gfycat.com/OptimalYellowCarp-size_restricted.gif" />
     </div>
 )
 

@@ -18,9 +18,6 @@ class SearchBox extends React.Component {
 
     handleInputChange = (event) => {
         const { name, value } = event.target;
-
-        console.log('input changing')
-
         this.setState({
             [name]: value
         });
@@ -32,9 +29,7 @@ class SearchBox extends React.Component {
         console.log('submitted', this.state.query)
 
         if (this.state.query) {
-            API.getArticleByQuery({
-                query: this.state.query
-            })
+            API.getArticleByQuery(this.state.query)
                 .then(res => this.parseArticleData(res))
                 .catch(err => console.log(err));
         }

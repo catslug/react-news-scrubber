@@ -2,7 +2,8 @@ import axios from "axios";
 
 export default {
     getArticleByQuery: function(query) {
-        return axios.get(`/https://api.nytimes.com/svc/search/v2/articlesearch.json?=${query}`);
+
+        return fetch(`/api/nyt/${query}`, {headers: {"Accept": "application/json", 'Content-Type': 'application/json'}})
     },
     getSavedArticles: function() {
         return axios.get(`/api/articles/`);
@@ -11,6 +12,6 @@ export default {
         return axios.delete(`/api/articles/${id}`);
     },
     saveArticle: function(articleData) {
-        return axios.post(`/api/books`, articleData);
+        return axios.post(`/api/articles`, articleData);
     }
 };

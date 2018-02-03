@@ -1,1 +1,1 @@
-web: yarn installDeps && yarn build && yarn server
+web: bin/boot

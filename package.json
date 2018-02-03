@@ -5,9 +5,9 @@
   "main": "server.js",
   "scripts": {
     "server": "node server.js",
-    "client": "cd client && npm run start",
-    "start": "node server.js && cd client && npm run start",
-    "build": "cd client && npm run build",
+    "client": "node scripts/start-client.js",
+    "start": "concurrently \"nodemon server.js\" \"npm run client\"",
+    "build": "node scripts/build.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "installDeps": "yarn && cd client && yarn"
   },

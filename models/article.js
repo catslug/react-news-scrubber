@@ -5,16 +5,16 @@ const articleSchema = new Schema({
     title: {
         type: String
     },
-    author: {
+    byline: {
         type: String
     },
     snippet: {
         type: String
     },
-    href: {
+    url: {
         type: String
     },
-    datePublished: {
+    date: {
         type: Date
     }
 });

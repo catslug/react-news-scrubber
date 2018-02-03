@@ -16,5 +16,7 @@ const Style = {
         marginLeft: '35%',
         marginRight: '35%',
         marginTop: '20px',
+        backgroundColor: '#d2f641',
+        color: 'black',
     }
 }

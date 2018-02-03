@@ -8,7 +8,11 @@ export const Input = (props) => (
             id={props.inputName}
             type={props.type}
             name={props.name}
+            value={props.value}
             className="validate"
+            maxLength={props.maxLength}
+            max={props.max !== undefined ? props.max : null}
+            min={props.min !== undefined ? props.min : null}
         />
         <label htmlFor={props.label}>{props.title}</label>
     </div>

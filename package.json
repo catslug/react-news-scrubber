@@ -10,7 +10,7 @@
     "start": "node server.js",
     "build": "cd client && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "installDeps": "yarn && cd client && yarn"
+    "installDeps": "npm install && cd client && npm install"
   },
   "repository": {
     "type": "git",

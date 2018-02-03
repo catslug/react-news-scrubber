@@ -13,7 +13,7 @@ app.use(routes);
 
 mongoose.Promise = global.Promise;
 mongoose.connect(
-    process.env.MONGODB_URI || "mongodb://localhost/reactnytscrubber",
+    process.env.MONGODB_URI || "mongodb://heroku_77c7mp8f:qjmt5fvmgof87h1a4fmhaag0v8@ds123698.mlab.com:23698/heroku_77c7mp8f",
     {
         useMongoClient: true
     }
